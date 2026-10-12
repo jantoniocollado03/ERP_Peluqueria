@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ERP_Peluqueria.Pages.ProveedoresView">
+    <Grid Margin="20" ColumnDefinitions="2*, 1*">
+        <!-- Lista de Proveedores -->
+        <Grid Grid.Column="0" RowDefinitions="Auto, *" Margin="0,0,15,0">
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,12">
+                <TextBox x:Name="TxtBuscar" Width="260" Watermark="Buscar proveedor..." TextChanged="TxtBuscar_TextChanged" />
+                <Button Content="Refrescar" Click="BtnRefrescar_Click" Background="#6C757D" Foreground="White" />
+            </StackPanel>
+
+            <DataGrid Grid.Row="1" x:Name="GridProveedores" AutoGenerateColumns="False" IsReadOnly="True"
+                      SelectionChanged="GridProveedores_SelectionChanged" GridLinesVisibility="All">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Empresa / Proveedor" Binding="{Binding Nombre}" Width="*" />
+                    <DataGridTextColumn Header="Persona de Contacto" Binding="{Binding Contacto}" Width="180" />
+                    <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="140" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!-- Formulario lateral -->
+        <Border Grid.Column="1" Background="White" CornerRadius="8" Padding="16" BoxShadow="0 2 8 #15000000">
+            <StackPanel Spacing="10">
+                <TextBlock x:Name="TxtTituloForm" Text="Nuevo Proveedor" FontSize="16" FontWeight="Bold" />
+
+                <TextBlock Text="Nombre Empresa / Distribuidor:" />
+                <TextBox x:Name="TxtNombre" Watermark="Ej. L'Oréal Professional Distribución" />
+
+                <TextBlock Text="Persona de Contacto:" />
+                <TextBox x:Name="TxtContacto" Watermark="Ej. Juan Pérez" />
+
+                <TextBlock Text="Teléfono:" />
+                <TextBox x:Name="TxtTelefono" Watermark="Ej. 600123456" />
+
+                <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,15,0,0">
+                    <Button Content="Guardar" Click="BtnGuardar_Click" Background="#198754" Foreground="White" />
+                    <Button Content="Limpiar" Click="BtnLimpiar_Click" Background="#6C757D" Foreground="White" />
+                    <Button x:Name="BtnEliminar" Content="Eliminar" Click="BtnEliminar_Click" Background="#DC3545" Foreground="White" IsVisible="False" />
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

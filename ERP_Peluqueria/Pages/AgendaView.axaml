@@ -1,0 +1,41 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ERP_Peluqueria.Pages.AgendaView">
+    <Grid Margin="20" ColumnDefinitions="2*, 1*">
+        <!-- Listado de citas -->
+        <Grid Grid.Column="0" RowDefinitions="Auto, *" Margin="0,0,15,0">
+            <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,12">
+                <TextBlock Text="Citas del día y próximas:" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" />
+                <Button Content="Recargar Citas" Click="BtnRecargar_Click" Background="#6C757D" Foreground="White" />
+            </StackPanel>
+
+            <DataGrid Grid.Row="1" x:Name="GridCitas" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="All">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Fecha / Hora" Binding="{Binding FechaHora, StringFormat='{}{0:dd/MM/yyyy HH:mm}'}" Width="140" />
+                    <DataGridTextColumn Header="Cliente" Binding="{Binding ClienteNombre}" Width="140" />
+                    <DataGridTextColumn Header="Servicio" Binding="{Binding ServicioNombre}" Width="150" />
+                    <DataGridTextColumn Header="Estilista" Binding="{Binding EmpleadoNombre}" Width="120" />
+                    <DataGridTextColumn Header="Estado" Binding="{Binding Estado}" Width="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
+        <!-- Formulario agendar cita -->
+        <Border Grid.Column="1" Background="White" CornerRadius="8" Padding="16" BoxShadow="0 2 8 #15000000">
+            <StackPanel Spacing="10">
+                <TextBlock Text="Agendar Nueva Cita" FontSize="16" FontWeight="Bold" />
+
+                <TextBlock Text="Cliente:" />
+                <ComboBox x:Name="CmbClientes" HorizontalAlignment="Stretch" DisplayMemberBinding="{Binding Nombre}" />
+
+                <TextBlock Text="Servicio:" />
+                <ComboBox x:Name="CmbServicios" HorizontalAlignment="Stretch" DisplayMemberBinding="{Binding Nombre}" />
+
+                <TextBlock Text="Fecha y Hora (yyyy-MM-dd HH:mm):" />
+                <TextBox x:Name="TxtFechaHora" Watermark="2026-10-20 10:30" />
+
+                <Button Content="Confirmar Cita" Click="BtnGuardarCita_Click" Background="#0D6EFD" Foreground="White" HorizontalAlignment="Stretch" Margin="0,15,0,0" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

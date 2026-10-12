@@ -1,0 +1,48 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ERP_Peluqueria.Pages.InformesView">
+    <Grid Margin="20" RowDefinitions="Auto, *">
+        <TextBlock Grid.Row="0" Text="📊 Informes de Rendimiento del Negocio" FontSize="20" FontWeight="Bold" Margin="0,0,0,16" />
+
+        <UniformGrid Grid.Row="1" Columns="3">
+            <!-- Informe 1 -->
+            <Border Background="White" CornerRadius="8" Padding="14" Margin="6" BoxShadow="0 2 6 #15000000">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="1. Total Facturado (Por Mes)" FontWeight="Bold" FontSize="14" Foreground="#0D6EFD" />
+                    <DataGrid x:Name="GridInformeMeses" AutoGenerateColumns="False" IsReadOnly="True" Height="400">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Mes / Año" Binding="{Binding Periodo}" Width="*" />
+                            <DataGridTextColumn Header="Total" Binding="{Binding Total, StringFormat='{}{0:C}'}" Width="100" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+
+            <!-- Informe 2 -->
+            <Border Background="White" CornerRadius="8" Padding="14" Margin="6" BoxShadow="0 2 6 #15000000">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="2. Servicios / Productos Estrella" FontWeight="Bold" FontSize="14" Foreground="#198754" />
+                    <DataGrid x:Name="GridInformeEstrella" AutoGenerateColumns="False" IsReadOnly="True" Height="400">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Concepto" Binding="{Binding Nombre}" Width="*" />
+                            <DataGridTextColumn Header="Vendidos" Binding="{Binding Unidades}" Width="80" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+
+            <!-- Informe 3 -->
+            <Border Background="White" CornerRadius="8" Padding="14" Margin="6" BoxShadow="0 2 6 #15000000">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="3. Mejores Clientes" FontWeight="Bold" FontSize="14" Foreground="#D63384" />
+                    <DataGrid x:Name="GridInformeClientes" AutoGenerateColumns="False" IsReadOnly="True" Height="400">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Cliente" Binding="{Binding ClienteNombre}" Width="*" />
+                            <DataGridTextColumn Header="Gasto Total" Binding="{Binding TotalGastado, StringFormat='{}{0:C}'}" Width="100" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </StackPanel>
+            </Border>
+        </UniformGrid>
+    </Grid>
+</UserControl>

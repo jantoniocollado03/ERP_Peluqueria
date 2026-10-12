@@ -1,0 +1,65 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:m="using:ERP_Peluqueria.Modelos"
+             x:Class="ERP_Peluqueria.Pages.VentasView">
+    <Grid Margin="20" ColumnDefinitions="1.8*, 1.2*">
+        <!-- Catálogo de productos y servicios -->
+        <Grid Grid.Column="0" RowDefinitions="Auto, *" Margin="0,0,15,0">
+            <TextBlock Grid.Row="0" Text="Catálogo de Productos y Servicios" FontWeight="Bold" FontSize="16" Margin="0,0,0,10" />
+            
+            <ListBox Grid.Row="1" x:Name="ListItemsCatalogo" SelectionChanged="ListItemsCatalogo_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate x:DataType="m:Articulo">
+                        <Border Padding="6" BorderBrush="#E9ECEF" BorderThickness="0,0,0,1">
+                            <Grid ColumnDefinitions="*, Auto, Auto">
+                                <TextBlock Grid.Column="0" Text="{Binding Nombre}" FontWeight="Medium" />
+                                <TextBlock Grid.Column="1" Text="{Binding Tipo}" Foreground="#6C757D" Margin="10,0" />
+                                <TextBlock Grid.Column="2" Text="{Binding Precio, StringFormat='{}{0:C}'}" FontWeight="Bold" Foreground="#198754" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <!-- Ticket / Factura -->
+        <Border Grid.Column="1" Background="White" CornerRadius="8" Padding="16" BoxShadow="0 2 8 #15000000">
+            <Grid RowDefinitions="Auto, Auto, *, Auto">
+                <TextBlock Grid.Row="0" Text="Factura de Venta / Ticket" FontSize="18" FontWeight="Bold" Margin="0,0,0,12" />
+
+                <StackPanel Grid.Row="1" Spacing="6" Margin="0,0,0,10">
+                    <TextBlock Text="Cliente:" />
+                    <ComboBox x:Name="CmbClienteVenta" HorizontalAlignment="Stretch" x:DataType="m:Cliente" DisplayMemberBinding="{Binding Nombre}" />
+                </StackPanel>
+
+                <!-- Detalle líneas -->
+                <DataGrid Grid.Row="2" x:Name="GridLineas" x:DataType="m:LineaVenta" AutoGenerateColumns="False" IsReadOnly="True" GridLinesVisibility="Horizontal">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Concepto" Binding="{Binding Nombre}" Width="*" />
+                        <DataGridTextColumn Header="Cant." Binding="{Binding Cantidad}" Width="60" />
+                        <DataGridTextColumn Header="Precio" Binding="{Binding PrecioUnitario, StringFormat='{}{0:C}'}" Width="80" />
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!-- Totales y emisión -->
+                <StackPanel Grid.Row="3" Spacing="6" Margin="0,12,0,0">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Grid.Column="0" Text="Base Imponible:" />
+                        <TextBlock Grid.Column="1" x:Name="TxtBase" Text="0,00 €" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Grid.Column="0" Text="IVA (21%):" />
+                        <TextBlock Grid.Column="1" x:Name="TxtIva" Text="0,00 €" />
+                    </Grid>
+                    <Grid ColumnDefinitions="*, Auto">
+                        <TextBlock Grid.Column="0" Text="Total a Pagar:" FontWeight="Bold" FontSize="16" />
+                        <TextBlock Grid.Column="1" x:Name="TxtTotal" Text="0,00 €" FontWeight="Bold" FontSize="16" Foreground="#198754" />
+                    </Grid>
+
+                    <Button Content="Emitir Factura y Cobrar" Click="BtnCobrar_Click" Background="#198754" Foreground="White" 
+                            HorizontalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="0,10,0,0" Padding="10" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

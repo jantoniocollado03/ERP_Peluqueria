@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="ERP_Peluqueria/App.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+        <entry key="ERP_Peluqueria/Pages/AgendaView.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+        <entry key="ERP_Peluqueria/Pages/Articulos.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+        <entry key="ERP_Peluqueria/Pages/ClientesView.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+        <entry key="ERP_Peluqueria/Pages/InformesView.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+        <entry key="ERP_Peluqueria/Pages/ProveedoresView.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+        <entry key="ERP_Peluqueria/Pages/VentasView.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+        <entry key="ERP_Peluqueria/Views/MainWindow.axaml" value="ERP_Peluqueria/ERP_Peluqueria.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,32 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="ERP_Peluqueria.Views.MainWindow"
+        Title="Glow &amp; Style ERP - Peluquería"
+        Width="1280" Height="780"
+        WindowStartupLocation="CenterScreen">
+    <Grid RowDefinitions="Auto, *">
+        <!-- Barra de navegación -->
+        <Border Grid.Row="0" x:Name="NavBar" Background="#212529" Padding="16,10" IsVisible="False">
+            <Grid ColumnDefinitions="Auto, *, Auto">
+                <TextBlock Grid.Column="0" Text="✂ Glow &amp; Style ERP" Foreground="#FFC107" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="0,0,24,0" />
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6">
+                    <Button Content="📅 Agenda" Click="NavAgenda_Click" Background="Transparent" Foreground="White" />
+                    <Button Content="👥 Clientes" Click="NavClientes_Click" Background="Transparent" Foreground="White" />
+                    <Button Content="📦 Servicios / Stock" Click="NavArticulos_Click" Background="Transparent" Foreground="White" />
+                    <Button Content="💳 TPV / Facturación" Click="NavVentas_Click" Background="Transparent" Foreground="White" />
+                    <Button x:Name="BtnNavProveedores" Content="🚚 Proveedores" Click="NavProveedores_Click" Background="Transparent" Foreground="White" />
+                    <Button x:Name="BtnNavInformes" Content="📊 Informes" Click="NavInformes_Click" Background="Transparent" Foreground="White" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" Spacing="12">
+                    <TextBlock x:Name="TxtUsuarioSesion" Foreground="#CED4DA" VerticalAlignment="Center" FontWeight="SemiBold" />
+                    <Button Content="Cerrar Sesión" Click="NavLogout_Click" Background="#DC3545" Foreground="White" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Contenedor dinámico -->
+        <ContentControl Grid.Row="1" x:Name="MainContent" Background="#F4F6F9" />
+    </Grid>
+</Window>
